@@ -17,13 +17,15 @@
  * Usage: GH_TOKEN=<token> node scripts/build-stats.mjs
  */
 
-import { readFileSync, writeFileSync } from 'node:fs';
+import { mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { dirname, join } from 'node:path';
 
 const LOGIN = process.env.STATS_LOGIN || 'AnowarDotDev';
 const TOKEN = process.env.GH_TOKEN || process.env.GITHUB_TOKEN;
-const README = join(dirname(fileURLToPath(import.meta.url)), '..', 'README.md');
+const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
+const README = join(ROOT, 'README.md');
+const ASSETS = join(ROOT, 'assets');
 const START = '<!-- STATS:START -->';
 const END = '<!-- STATS:END -->';
 const REPOS_START = '<!-- REPOS:START -->';
@@ -190,10 +192,121 @@ const shield = (label, message, color, extra = '') => {
     return `https://img.shields.io/badge/${esc(label)}-${esc(message)}-${color}?style=for-the-badge${extra}`;
 };
 
-function bar(fraction, width = 20) {
-    const filled = Math.max(fraction > 0 ? 1 : 0, Math.round(fraction * width));
+// ---------------------------------------------------------------------------
+// SVG bar charts
+//
+// One hue, not GitHub's language colors: run through the palette validator those
+// fail hard — #f1e05a (JavaScript) sits at 1.35:1 on a white surface and #4F5D95
+// (PHP) reads as gray. Every row is directly labelled anyway, so colour was only
+// ever decoration here. Blue #2a78d6 / #3987e5 passes every check on both the
+// light (#ffffff) and dark (#0d1117) README surfaces.
+// ---------------------------------------------------------------------------
 
-    return '█'.repeat(filled) + '░'.repeat(Math.max(0, width - filled));
+const THEMES = {
+    // Ink and rule colours are GitHub's own, so the charts sit in the README
+    // rather than on top of it.
+    light: { ink: '#1f2328', muted: '#656d76', rule: '#d0d7de', bar: '#2a78d6' },
+    dark: { ink: '#e6edf3', muted: '#8b949e', rule: '#30363d', bar: '#3987e5' },
+};
+
+const CHART = {
+    padX: 4,
+    labelWidth: 96,
+    gap: 14,
+    plotWidth: 520,
+    valueGap: 8,
+    valueWidth: 56,
+    rowHeight: 28,
+    padY: 12,
+    thickness: 13,
+    radius: 4,
+};
+
+const escapeXml = (s) =>
+    String(s).replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&apos;' })[c]);
+
+/** Bar grows from the baseline: square where it starts, 4px rounded at the data end. */
+function barPath(x, y, width, height, radius) {
+    const r = Math.min(radius, width, height / 2);
+    const n = (v) => Number(v.toFixed(2));
+
+    return `M${x} ${y}h${n(width - r)}a${r} ${r} 0 0 1 ${r} ${r}v${n(height - 2 * r)}a${r} ${r} 0 0 1 ${-r} ${r}H${x}z`;
+}
+
+/**
+ * Horizontal bars, one row per item. No gridlines and no track — every value is
+ * directly labelled, and direct labels come before gridlines.
+ */
+function chartSvg(rows, { title, theme }) {
+    const t = THEMES[theme];
+    const c = CHART;
+    const x0 = c.padX + c.labelWidth + c.gap;
+    const width = x0 + c.plotWidth + c.valueGap + c.valueWidth + c.padX;
+    const height = c.padY * 2 + rows.length * c.rowHeight;
+    const peak = Math.max(...rows.map((r) => r.value), 1);
+
+    const marks = rows
+        .map((row, i) => {
+            const y = c.padY + i * c.rowHeight;
+            const midY = y + c.rowHeight / 2;
+            const barY = midY - c.thickness / 2;
+            // A non-zero value never renders as nothing, so 20 beside 4,037 still reads.
+            const barW = row.value > 0 ? Math.max(c.radius + 1, (row.value / peak) * c.plotWidth) : 0;
+
+            // The value rides its own bar's tip rather than sitting in a
+            // right-pinned column, where a long gap detaches it from the mark.
+            const valueX = Number((x0 + barW + c.valueGap).toFixed(2));
+
+            return [
+                `    <text x="${x0 - c.gap}" y="${midY}" fill="${t.ink}" text-anchor="end" dominant-baseline="central">${escapeXml(row.label)}</text>`,
+                barW > 0 ? `    <path d="${barPath(x0, barY, barW, c.thickness, c.radius)}" fill="${t.bar}"/>` : '',
+                `    <text x="${valueX}" y="${midY}" fill="${t.muted}" dominant-baseline="central">${escapeXml(row.display)}</text>`,
+            ]
+                .filter(Boolean)
+                .join('\n');
+        })
+        .join('\n');
+
+    return `<svg xmlns="http://www.w3.org/2000/svg" width="${width}" height="${height}" viewBox="0 0 ${width} ${height}" role="img" aria-label="${escapeXml(title)}">
+  <title>${escapeXml(title)}</title>
+  <g font-family="system-ui,-apple-system,'Segoe UI',sans-serif" font-size="13">
+    <line x1="${x0 - 0.5}" y1="${c.padY}" x2="${x0 - 0.5}" y2="${height - c.padY}" stroke="${t.rule}" stroke-width="1"/>
+${marks}
+  </g>
+</svg>
+`;
+}
+
+/** Writes both theme variants and returns the <picture> markup for the README. */
+function writeChart(name, rows, { title, alt }) {
+    mkdirSync(ASSETS, { recursive: true });
+
+    for (const theme of ['light', 'dark']) {
+        writeFileSync(join(ASSETS, `${name}-${theme}.svg`), chartSvg(rows, { title, theme }));
+    }
+
+    // Cache-buster: GitHub proxies README images through camo, which would keep
+    // serving yesterday's chart from an unchanged URL.
+    const v = new Date().toISOString().slice(0, 10).replace(/-/g, '');
+
+    return `<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="assets/${name}-dark.svg?v=${v}">
+  <img alt="${escapeXml(alt)}" src="assets/${name}-light.svg?v=${v}">
+</picture>`;
+}
+
+/** Numbers stay reachable for screen readers and search, not only in the image. */
+function tableView(rows, [labelHead, valueHead]) {
+    const body = rows.map((r) => `| ${r.label} | ${r.display} |`).join('\n');
+
+    return `<details>
+<summary><sub>Table view</sub></summary>
+
+| ${labelHead} | ${valueHead} |
+| --- | --- |
+${body}
+
+</details>`;
 }
 
 function render({ profile, counts, calendars, repos, streaks }) {
@@ -221,15 +334,16 @@ function render({ profile, counts, calendars, repos, streaks }) {
         )
         .join('\n');
 
-    // Contributions per year, newest first.
-    const years = calendars
-        .map((c) => c)
+    const rows = calendars
+        .filter((c) => c.total > 0)
         .sort((a, b) => b.year - a.year)
-        .filter((c) => c.total > 0);
-    const peak = Math.max(...years.map((c) => c.total), 1);
-    const yearRows = years
-        .map((c) => `${c.year}  ${bar(c.total / peak, 24)}  ${String(num(c.total)).padStart(6)}`)
-        .join('\n');
+        .map((c) => ({ label: String(c.year), value: c.total, display: num(c.total) }));
+
+    const title = `Contributions per year, ${since}–${rows[0]?.label ?? since}`;
+    const chart = writeChart('contributions', rows, {
+        title,
+        alt: `${title}: ${rows.map((r) => `${r.label} ${r.display}`).join(', ')}`,
+    });
 
     const updated = new Date().toISOString().slice(0, 10);
     const followers = profile.followers.totalCount;
@@ -242,9 +356,9 @@ ${badges}
 
 **Contributions per year** — public and private combined, since ${since}
 
-\`\`\`text
-${yearRows}
-\`\`\`
+${chart}
+
+${tableView(rows, ['Year', 'Contributions'])}
 
 <div align="center"><sub>${followers > 0 ? `👥 ${num(followers)} followers · ` : ''}generated ${updated} by <a href="scripts/build-stats.mjs">build-stats.mjs</a></sub></div>`;
 }
@@ -266,15 +380,23 @@ function renderRepos({ repos }) {
     }
 
     const langTotal = [...byLang.values()].reduce((a, b) => a + b, 0) || 1;
-    const langRows = [...byLang.entries()]
-        .sort((a, b) => b[1] - a[1])
-        .slice(0, 8)
-        .map(([name, count]) => {
-            const pct = (100 * count) / langTotal;
+    const ranked = [...byLang.entries()].sort((a, b) => b[1] - a[1]);
+    const shown = ranked.slice(0, 8);
+    const rows = shown.map(([name, count]) => ({
+        label: name,
+        value: count,
+        display: `${((100 * count) / langTotal).toFixed(1)}%`,
+    }));
 
-            return `${name.padEnd(12)}  ${bar(count / langTotal, 20)}  ${pct.toFixed(1).padStart(5)}%`;
-        })
-        .join('\n');
+    const title = 'Repositories by primary language';
+    const chart = writeChart('languages', rows, {
+        title,
+        alt: `${title}: ${rows.map((r) => `${r.label} ${r.display}`).join(', ')}`,
+    });
+
+    // Never imply the chart is the whole list when it is a top-8 cut.
+    const hidden = ranked.length - shown.length;
+    const note = hidden > 0 ? `, top ${shown.length} of ${ranked.length}` : '';
 
     const repoBadge = `<img alt="Repositories" src="${shield('Repositories', num(repos.length), '57606a', '&logo=github&logoColor=white')}">`;
     const starBadge =
@@ -286,11 +408,11 @@ ${repoBadge}${starBadge}
 
 </div>
 
-**Repositories by primary language** — ${repos.length} owned repos, forks excluded
+**Repositories by primary language** — ${repos.length} owned repos, forks excluded${note}
 
-\`\`\`text
-${langRows}
-\`\`\``;
+${chart}
+
+${tableView(rows, ['Language', 'Share'])}`;
 }
 
 /**

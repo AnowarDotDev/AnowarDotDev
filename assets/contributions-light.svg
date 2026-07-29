@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="702" height="192" viewBox="0 0 702 192" role="img" aria-label="Contributions per year, 2021–2026">
+  <title>Contributions per year, 2021–2026</title>
+  <g font-family="system-ui,-apple-system,'Segoe UI',sans-serif" font-size="13">
+    <line x1="113.5" y1="12" x2="113.5" y2="180" stroke="#d0d7de" stroke-width="1"/>
+    <text x="100" y="26" fill="#1f2328" text-anchor="end" dominant-baseline="central">2026</text>
+    <path d="M114 19.5h306.3a4 4 0 0 1 4 4v5a4 4 0 0 1 -4 4H114z" fill="#2a78d6"/>
+    <text x="432.3" y="26" fill="#656d76" dominant-baseline="central">2,409</text>
+    <text x="100" y="54" fill="#1f2328" text-anchor="end" dominant-baseline="central">2025</text>
+    <path d="M114 47.5h516a4 4 0 0 1 4 4v5a4 4 0 0 1 -4 4H114z" fill="#2a78d6"/>
+    <text x="642" y="54" fill="#656d76" dominant-baseline="central">4,037</text>
+    <text x="100" y="82" fill="#1f2328" text-anchor="end" dominant-baseline="central">2024</text>
+    <path d="M114 75.5h167.06a4 4 0 0 1 4 4v5a4 4 0 0 1 -4 4H114z" fill="#2a78d6"/>
+    <text x="293.06" y="82" fill="#656d76" dominant-baseline="central">1,328</text>
+    <text x="100" y="110" fill="#1f2328" text-anchor="end" dominant-baseline="central">2023</text>
+    <path d="M114 103.5h200.55a4 4 0 0 1 4 4v5a4 4 0 0 1 -4 4H114z" fill="#2a78d6"/>
+    <text x="326.55" y="110" fill="#656d76" dominant-baseline="central">1,588</text>
+    <text x="100" y="138" fill="#1f2328" text-anchor="end" dominant-baseline="central">2022</text>
+    <path d="M114 131.5h126.1a4 4 0 0 1 4 4v5a4 4 0 0 1 -4 4H114z" fill="#2a78d6"/>
+    <text x="252.1" y="138" fill="#656d76" dominant-baseline="central">1,010</text>
+    <text x="100" y="166" fill="#1f2328" text-anchor="end" dominant-baseline="central">2021</text>
+    <path d="M114 159.5h1a4 4 0 0 1 4 4v5a4 4 0 0 1 -4 4H114z" fill="#2a78d6"/>
+    <text x="127" y="166" fill="#656d76" dominant-baseline="central">20</text>
+  </g>
+</svg>

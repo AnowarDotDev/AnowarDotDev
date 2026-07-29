@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="702" height="248" viewBox="0 0 702 248" role="img" aria-label="Repositories by primary language">
+  <title>Repositories by primary language</title>
+  <g font-family="system-ui,-apple-system,'Segoe UI',sans-serif" font-size="13">
+    <line x1="113.5" y1="12" x2="113.5" y2="236" stroke="#30363d" stroke-width="1"/>
+    <text x="100" y="26" fill="#e6edf3" text-anchor="end" dominant-baseline="central">PHP</text>
+    <path d="M114 19.5h516a4 4 0 0 1 4 4v5a4 4 0 0 1 -4 4H114z" fill="#3987e5"/>
+    <text x="642" y="26" fill="#8b949e" dominant-baseline="central">25.0%</text>
+    <text x="100" y="54" fill="#e6edf3" text-anchor="end" dominant-baseline="central">JavaScript</text>
+    <path d="M114 47.5h472.67a4 4 0 0 1 4 4v5a4 4 0 0 1 -4 4H114z" fill="#3987e5"/>
+    <text x="598.67" y="54" fill="#8b949e" dominant-baseline="central">22.9%</text>
+    <text x="100" y="82" fill="#e6edf3" text-anchor="end" dominant-baseline="central">Blade</text>
+    <path d="M114 75.5h299.33a4 4 0 0 1 4 4v5a4 4 0 0 1 -4 4H114z" fill="#3987e5"/>
+    <text x="425.33" y="82" fill="#8b949e" dominant-baseline="central">14.6%</text>
+    <text x="100" y="110" fill="#e6edf3" text-anchor="end" dominant-baseline="central">Vue</text>
+    <path d="M114 103.5h256a4 4 0 0 1 4 4v5a4 4 0 0 1 -4 4H114z" fill="#3987e5"/>
+    <text x="382" y="110" fill="#8b949e" dominant-baseline="central">12.5%</text>
+    <text x="100" y="138" fill="#e6edf3" text-anchor="end" dominant-baseline="central">HTML</text>
+    <path d="M114 131.5h212.67a4 4 0 0 1 4 4v5a4 4 0 0 1 -4 4H114z" fill="#3987e5"/>
+    <text x="338.67" y="138" fill="#8b949e" dominant-baseline="central">10.4%</text>
+    <text x="100" y="166" fill="#e6edf3" text-anchor="end" dominant-baseline="central">TypeScript</text>
+    <path d="M114 159.5h126a4 4 0 0 1 4 4v5a4 4 0 0 1 -4 4H114z" fill="#3987e5"/>
+    <text x="252" y="166" fill="#8b949e" dominant-baseline="central">6.3%</text>
+    <text x="100" y="194" fill="#e6edf3" text-anchor="end" dominant-baseline="central">Dart</text>
+    <path d="M114 187.5h82.67a4 4 0 0 1 4 4v5a4 4 0 0 1 -4 4H114z" fill="#3987e5"/>
+    <text x="208.67" y="194" fill="#8b949e" dominant-baseline="central">4.2%</text>
+    <text x="100" y="222" fill="#e6edf3" text-anchor="end" dominant-baseline="central">C++</text>
+    <path d="M114 215.5h82.67a4 4 0 0 1 4 4v5a4 4 0 0 1 -4 4H114z" fill="#3987e5"/>
+    <text x="208.67" y="222" fill="#8b949e" dominant-baseline="central">4.2%</text>
+  </g>
+</svg>
