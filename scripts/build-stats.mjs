@@ -332,7 +332,9 @@ function render({ profile, counts, calendars, repos, streaks }) {
             ([label, value, suffix, color, extra]) =>
                 `<img alt="${label}" src="${shield(label, num(value) + suffix, color, extra)}">`,
         )
-        .join('\n');
+        // One source line, or GitHub renders each badge on its own row and the
+        // centred result reads as a staircase instead of a wrapped strip.
+        .join(' ');
 
     const rows = calendars
         .filter((c) => c.total > 0)
@@ -400,7 +402,7 @@ function renderRepos({ repos }) {
 
     const repoBadge = `<img alt="Repositories" src="${shield('Repositories', num(repos.length), '57606a', '&logo=github&logoColor=white')}">`;
     const starBadge =
-        stars > 0 ? `\n<img alt="Stars" src="${shield('Stars', num(stars), 'd29922', '&logo=github&logoColor=white')}">` : '';
+        stars > 0 ? ` <img alt="Stars" src="${shield('Stars', num(stars), 'd29922', '&logo=github&logoColor=white')}">` : '';
 
     return `<div align="center">
 
