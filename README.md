@@ -135,8 +135,6 @@ What's inside:
 
 </details>
 
-<div align="center"><sub>👥 3 followers · generated 2026-07-29 by <a href="scripts/build-stats.mjs">build-stats.mjs</a></sub></div>
-
 <!-- STATS:END -->
 
 <!-- REPOS:START -->
@@ -165,6 +163,12 @@ What's inside:
 </details>
 
 <!-- REPOS:END -->
+
+<!-- META:START -->
+
+<div align="center"><sub>3 followers · generated 2026-07-29 by <a href="scripts/build-stats.mjs">build-stats.mjs</a></sub></div>
+
+<!-- META:END -->
 
 ---
 

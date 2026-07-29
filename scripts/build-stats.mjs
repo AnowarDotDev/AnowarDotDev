@@ -30,6 +30,8 @@ const START = '<!-- STATS:START -->';
 const END = '<!-- STATS:END -->';
 const REPOS_START = '<!-- REPOS:START -->';
 const REPOS_END = '<!-- REPOS:END -->';
+const META_START = '<!-- META:START -->';
+const META_END = '<!-- META:END -->';
 
 if (!TOKEN) {
     console.error('Missing GH_TOKEN / GITHUB_TOKEN.');
@@ -386,9 +388,6 @@ function render({ profile, counts, calendars, repos, streaks }) {
         alt: `${title}: ${rows.map((r) => `${r.label} ${r.display}`).join(', ')}`,
     });
 
-    const updated = new Date().toISOString().slice(0, 10);
-    const followers = profile.followers.totalCount;
-
     return `<div align="center">
 
 ${stats}
@@ -399,9 +398,18 @@ ${stats}
 
 ${chart}
 
-${tableView(rows, ['Year', 'Contributions'])}
+${tableView(rows, ['Year', 'Contributions'])}`;
+}
 
-<div align="center"><sub>${followers > 0 ? `👥 ${num(followers)} followers · ` : ''}generated ${updated} by <a href="scripts/build-stats.mjs">build-stats.mjs</a></sub></div>`;
+/**
+ * Section footer. Its own block because the repo/language block sits between the
+ * stats and here — written into STATS it rendered halfway up the section.
+ */
+function renderMeta({ profile }) {
+    const followers = profile.followers.totalCount;
+    const updated = new Date().toISOString().slice(0, 10);
+
+    return `<div align="center"><sub>${followers > 0 ? `${num(followers)} followers · ` : ''}generated ${updated} by <a href="scripts/build-stats.mjs">build-stats.mjs</a></sub></div>`;
 }
 
 /**
@@ -513,6 +521,8 @@ if (repos.some((r) => r.isPrivate)) {
 } else {
     console.log(`Repos: only ${repos.length} public visible — repo block left unchanged (needs STATS_TOKEN).`);
 }
+
+next = replaceBlock(next, META_START, META_END, renderMeta({ profile }));
 
 if (next === readme) {
     console.log('Stats unchanged.');
