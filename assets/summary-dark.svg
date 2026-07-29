@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="702" height="128" viewBox="0 0 702 128" role="img" aria-label="10,149 Commits, 10,392 Contributions, 178 Pull requests, 33 Issues, 5 Day streak, 27 Longest streak">
+  <title>10,149 Commits, 10,392 Contributions, 178 Pull requests, 33 Issues, 5 Day streak, 27 Longest streak</title>
+  <g font-family="system-ui,-apple-system,'Segoe UI',sans-serif">
+    <text x="117" y="30" fill="#e6edf3" font-size="21" font-weight="600" text-anchor="middle">10,149</text>
+    <text x="117" y="50" fill="#8b949e" font-size="11.5" text-anchor="middle">Commits</text>
+    <text x="351" y="30" fill="#e6edf3" font-size="21" font-weight="600" text-anchor="middle">10,392</text>
+    <text x="351" y="50" fill="#8b949e" font-size="11.5" text-anchor="middle">Contributions</text>
+    <text x="585" y="30" fill="#e6edf3" font-size="21" font-weight="600" text-anchor="middle">178</text>
+    <text x="585" y="50" fill="#8b949e" font-size="11.5" text-anchor="middle">Pull requests</text>
+    <text x="117" y="88" fill="#e6edf3" font-size="21" font-weight="600" text-anchor="middle">33</text>
+    <text x="117" y="108" fill="#8b949e" font-size="11.5" text-anchor="middle">Issues</text>
+    <text x="351" y="88" fill="#e6edf3" font-size="21" font-weight="600" text-anchor="middle">5</text>
+    <text x="351" y="108" fill="#8b949e" font-size="11.5" text-anchor="middle">Day streak</text>
+    <text x="585" y="88" fill="#e6edf3" font-size="21" font-weight="600" text-anchor="middle">27</text>
+    <text x="585" y="108" fill="#8b949e" font-size="11.5" text-anchor="middle">Longest streak</text>
+  </g>
+</svg>

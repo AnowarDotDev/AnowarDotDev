@@ -8,7 +8,7 @@
 
 `Rajshahi, Bangladesh` · `Open to remote` · `Available for projects`
 
-<a href="https://anowar.dev"><img alt="Portfolio" src="https://img.shields.io/badge/Portfolio-anowar.dev-0f172a?style=for-the-badge&logo=googlechrome&logoColor=white"></a> <a href="https://www.linkedin.com/in/AnowarDotDev"><img alt="LinkedIn" src="https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white"></a> <a href="https://x.com/AnowarDotDev"><img alt="X" src="https://img.shields.io/badge/X-000000?style=for-the-badge&logo=x&logoColor=white"></a> <a href="https://www.facebook.com/AnowarDotDev/"><img alt="Facebook" src="https://img.shields.io/badge/Facebook-1877F2?style=for-the-badge&logo=facebook&logoColor=white"></a> <a href="mailto:info@anowar.dev"><img alt="Email" src="https://img.shields.io/badge/Email-info@anowar.dev-EA4335?style=for-the-badge&logo=gmail&logoColor=white"></a> <a href="https://calendly.com/anowardotdev/new-meeting"><img alt="Book a call" src="https://img.shields.io/badge/Book_a_call-006BFF?style=for-the-badge&logo=calendly&logoColor=white"></a>
+[**Portfolio**](https://anowar.dev) · [LinkedIn](https://www.linkedin.com/in/AnowarDotDev) · [X](https://x.com/AnowarDotDev) · [Facebook](https://www.facebook.com/AnowarDotDev/) · [info@anowar.dev](mailto:info@anowar.dev) · [Book a call](https://calendly.com/anowardotdev/new-meeting)
 
 <img alt="Profile views" src="https://komarev.com/ghpvc/?username=AnowarDotDev&style=flat-square&color=0f172a&label=Profile+views">
 
@@ -34,48 +34,19 @@ I've shipped client portals, CMSs, marketplaces, learning platforms, payment flo
 
 **Backend**
 
-![PHP](https://img.shields.io/badge/PHP-777BB4?style=flat-square&logo=php&logoColor=white)
-![Laravel](https://img.shields.io/badge/Laravel-FF2D20?style=flat-square&logo=laravel&logoColor=white)
-![Livewire](https://img.shields.io/badge/Livewire-4E56A6?style=flat-square&logo=livewire&logoColor=white)
-![MySQL](https://img.shields.io/badge/MySQL-4479A1?style=flat-square&logo=mysql&logoColor=white)
-![PostgreSQL](https://img.shields.io/badge/PostgreSQL-4169E1?style=flat-square&logo=postgresql&logoColor=white)
-![Redis](https://img.shields.io/badge/Redis-DC382D?style=flat-square&logo=redis&logoColor=white)
-![Octane](https://img.shields.io/badge/Laravel_Octane-FF2D20?style=flat-square&logo=laravel&logoColor=white)
-![Reverb](https://img.shields.io/badge/Reverb_(WebSockets)-FF2D20?style=flat-square&logo=laravel&logoColor=white)
-![REST API](https://img.shields.io/badge/REST_APIs-005571?style=flat-square&logo=swagger&logoColor=white)
+`PHP` `Laravel` `Livewire` `MySQL` `PostgreSQL` `Redis` `Laravel Octane` `Reverb` `REST APIs`
 
 **Frontend**
 
-![React](https://img.shields.io/badge/React-61DAFB?style=flat-square&logo=react&logoColor=black)
-![Next.js](https://img.shields.io/badge/Next.js-000000?style=flat-square&logo=nextdotjs&logoColor=white)
-![Vue](https://img.shields.io/badge/Vue-4FC08D?style=flat-square&logo=vuedotjs&logoColor=white)
-![Nuxt](https://img.shields.io/badge/Nuxt-00DC82?style=flat-square&logo=nuxtdotjs&logoColor=white)
-![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=flat-square&logo=typescript&logoColor=white)
-![Inertia.js](https://img.shields.io/badge/Inertia.js-9553E9?style=flat-square&logo=inertia&logoColor=white)
-![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-06B6D4?style=flat-square&logo=tailwindcss&logoColor=white)
-![shadcn/ui](https://img.shields.io/badge/shadcn%2Fui-000000?style=flat-square&logo=shadcnui&logoColor=white)
-![Vite](https://img.shields.io/badge/Vite-646CFF?style=flat-square&logo=vite&logoColor=white)
+`React` `Next.js` `Vue` `Nuxt` `TypeScript` `Inertia.js` `Tailwind CSS` `shadcn/ui` `Vite`
 
 **Payments &amp; services**
 
-![Stripe](https://img.shields.io/badge/Stripe-635BFF?style=flat-square&logo=stripe&logoColor=white)
-![Paddle](https://img.shields.io/badge/Paddle-FDDD35?style=flat-square&logo=paddle&logoColor=black)
-![bKash](https://img.shields.io/badge/bKash-E2136E?style=flat-square&logoColor=white)
-![Nagad](https://img.shields.io/badge/Nagad-F15A2B?style=flat-square&logoColor=white)
-![Algolia](https://img.shields.io/badge/Algolia-003DFF?style=flat-square&logo=algolia&logoColor=white)
-![AI SDK](https://img.shields.io/badge/AI_SDK-000000?style=flat-square&logo=openaigym&logoColor=white)
+`Stripe` `Paddle` `bKash` `Nagad` `Algolia` `AI SDK`
 
 **DevOps &amp; tooling**
 
-![Docker](https://img.shields.io/badge/Docker-2496ED?style=flat-square&logo=docker&logoColor=white)
-![Nginx](https://img.shields.io/badge/Nginx-009639?style=flat-square&logo=nginx&logoColor=white)
-![AWS](https://img.shields.io/badge/AWS_(S3_·_EC2)-232F3E?style=flat-square&logo=amazonwebservices&logoColor=white)
-![Cloudflare](https://img.shields.io/badge/Cloudflare-F38020?style=flat-square&logo=cloudflare&logoColor=white)
-![GitHub Actions](https://img.shields.io/badge/GitHub_Actions-2088FF?style=flat-square&logo=githubactions&logoColor=white)
-![Git](https://img.shields.io/badge/Git-F05032?style=flat-square&logo=git&logoColor=white)
-![Laravel Herd](https://img.shields.io/badge/Laravel_Herd-FF2D20?style=flat-square&logo=laravel&logoColor=white)
-![Postman](https://img.shields.io/badge/Postman-FF6C37?style=flat-square&logo=postman&logoColor=white)
-![Linux](https://img.shields.io/badge/Linux-FCC624?style=flat-square&logo=linux&logoColor=black)
+`Docker` `Nginx` `AWS (S3 · EC2)` `Cloudflare` `GitHub Actions` `Git` `Laravel Herd` `Postman` `Linux`
 
 ---
 
@@ -136,7 +107,10 @@ What's inside:
 
 <div align="center">
 
-<img alt="Commits" src="https://img.shields.io/badge/Commits-10%2C149-0f172a?style=for-the-badge&logo=git&logoColor=white"> <img alt="Contributions" src="https://img.shields.io/badge/Contributions-10%2C392-1f6feb?style=for-the-badge&logo=github&logoColor=white"> <img alt="Pull requests" src="https://img.shields.io/badge/Pull%20requests-178-8250df?style=for-the-badge&logo=github&logoColor=white"> <img alt="Issues" src="https://img.shields.io/badge/Issues-33-0969da?style=for-the-badge&logo=github&logoColor=white"> <img alt="Current streak" src="https://img.shields.io/badge/Current%20streak-5%20days-d29922?style=for-the-badge&logo=fire&logoColor=white"> <img alt="Longest streak" src="https://img.shields.io/badge/Longest%20streak-27%20days-cf222e?style=for-the-badge&logo=fire&logoColor=white">
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="assets/summary-dark.svg?v=20260729">
+  <img alt="10,149 Commits, 10,392 Contributions, 178 Pull requests, 33 Issues, 5 Day streak, 27 Longest streak" src="assets/summary-light.svg?v=20260729">
+</picture>
 
 </div>
 
@@ -166,12 +140,6 @@ What's inside:
 <!-- STATS:END -->
 
 <!-- REPOS:START -->
-
-<div align="center">
-
-<img alt="Repositories" src="https://img.shields.io/badge/Repositories-49-57606a?style=for-the-badge&logo=github&logoColor=white">
-
-</div>
 
 **Repositories by primary language** — 49 owned repos, forks excluded
 
@@ -206,7 +174,7 @@ What's inside:
 
 Got a project that needs to ship? I'm available for freelance and contract work.
 
-<a href="https://calendly.com/anowardotdev/new-meeting"><img alt="Book a call" src="https://img.shields.io/badge/📅_Book_a_call-006BFF?style=for-the-badge"></a> <a href="https://anowar.dev/hire-me"><img alt="Hire me" src="https://img.shields.io/badge/🤝_Hire_me-0f172a?style=for-the-badge"></a> <a href="mailto:info@anowar.dev"><img alt="Email me" src="https://img.shields.io/badge/✉️_Email_me-EA4335?style=for-the-badge"></a>
+[📅 **Book a call**](https://calendly.com/anowardotdev/new-meeting) · [🤝 Hire me](https://anowar.dev/hire-me) · [✉️ Email me](mailto:info@anowar.dev)
 
 <sub><i>"Code is not just a tool — it's a medium for creativity. I approach every project like a craftsman: with attention to detail, pride in the work, and a relentless drive to make it better."</i></sub>
 

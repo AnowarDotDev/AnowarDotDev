@@ -277,12 +277,49 @@ ${marks}
 `;
 }
 
+/**
+ * Stat figures as one SVG rather than a strip of shields.io badges. GitHub's
+ * markdown CSS computes `display: block` on every image in a README, so N badges
+ * become N stacked rows no matter how the source is written — measured at 52
+ * images on 52 rows. One image is one row, and matches the charts.
+ */
+function statsSvg(items, theme) {
+    const t = THEMES[theme];
+    const cols = 3;
+    const colW = 234;
+    const rowH = 58;
+    const padY = 6;
+    const rows = Math.ceil(items.length / cols);
+    const width = cols * colW;
+    const height = padY * 2 + rows * rowH;
+
+    const cells = items
+        .map((item, i) => {
+            const cx = (i % cols) * colW + colW / 2;
+            const top = padY + Math.floor(i / cols) * rowH;
+
+            return `    <text x="${cx}" y="${top + 24}" fill="${t.ink}" font-size="21" font-weight="600" text-anchor="middle">${escapeXml(item.value)}</text>
+    <text x="${cx}" y="${top + 44}" fill="${t.muted}" font-size="11.5" text-anchor="middle">${escapeXml(item.label)}</text>`;
+        })
+        .join('\n');
+
+    const label = items.map((i) => `${i.value} ${i.label}`).join(', ');
+
+    return `<svg xmlns="http://www.w3.org/2000/svg" width="${width}" height="${height}" viewBox="0 0 ${width} ${height}" role="img" aria-label="${escapeXml(label)}">
+  <title>${escapeXml(label)}</title>
+  <g font-family="system-ui,-apple-system,'Segoe UI',sans-serif">
+${cells}
+  </g>
+</svg>
+`;
+}
+
 /** Writes both theme variants and returns the <picture> markup for the README. */
-function writeChart(name, rows, { title, alt }) {
+function writeSvgPair(name, alt, build) {
     mkdirSync(ASSETS, { recursive: true });
 
     for (const theme of ['light', 'dark']) {
-        writeFileSync(join(ASSETS, `${name}-${theme}.svg`), chartSvg(rows, { title, theme }));
+        writeFileSync(join(ASSETS, `${name}-${theme}.svg`), build(theme));
     }
 
     // Cache-buster: GitHub proxies README images through camo, which would keep
@@ -294,6 +331,9 @@ function writeChart(name, rows, { title, alt }) {
   <img alt="${escapeXml(alt)}" src="assets/${name}-light.svg?v=${v}">
 </picture>`;
 }
+
+const writeChart = (name, rows, { title, alt }) =>
+    writeSvgPair(name, alt, (theme) => chartSvg(rows, { title, theme }));
 
 /** Numbers stay reachable for screen readers and search, not only in the image. */
 function tableView(rows, [labelHead, valueHead]) {
@@ -317,24 +357,23 @@ function render({ profile, counts, calendars, repos, streaks }) {
     const contributions = calendars.reduce((n, c) => n + c.total, 0);
     const since = new Date(profile.createdAt).getUTCFullYear();
 
-    // A badge reading "0" is worse than no badge, so anything empty is dropped.
-    const badges = [
-        ['Commits', commits, '', '0f172a', '&logo=git&logoColor=white'],
-        ['Contributions', contributions, '', '1f6feb', '&logo=github&logoColor=white'],
-        ['Pull requests', prs, '', '8250df', '&logo=github&logoColor=white'],
-        ['Code reviews', reviews, '', '0969da', '&logo=github&logoColor=white'],
-        ['Issues', issues, '', '0969da', '&logo=github&logoColor=white'],
-        ['Current streak', streaks.current, ' days', 'd29922', '&logo=fire&logoColor=white'],
-        ['Longest streak', streaks.longest, ' days', 'cf222e', '&logo=fire&logoColor=white'],
+    // A figure reading "0" is worse than no figure, so anything empty is dropped.
+    const figures = [
+        ['Commits', commits],
+        ['Contributions', contributions],
+        ['Pull requests', prs],
+        ['Code reviews', reviews],
+        ['Issues', issues],
+        ['Day streak', streaks.current],
+        ['Longest streak', streaks.longest],
     ]
         .filter(([, value]) => value >= 2)
-        .map(
-            ([label, value, suffix, color, extra]) =>
-                `<img alt="${label}" src="${shield(label, num(value) + suffix, color, extra)}">`,
-        )
-        // One source line, or GitHub renders each badge on its own row and the
-        // centred result reads as a staircase instead of a wrapped strip.
-        .join(' ');
+        .slice(0, 6)
+        .map(([label, value]) => ({ label, value: num(value) }));
+
+    const stats = writeSvgPair('summary', figures.map((f) => `${f.value} ${f.label}`).join(', '), (theme) =>
+        statsSvg(figures, theme),
+    );
 
     const rows = calendars
         .filter((c) => c.total > 0)
@@ -352,7 +391,7 @@ function render({ profile, counts, calendars, repos, streaks }) {
 
     return `<div align="center">
 
-${badges}
+${stats}
 
 </div>
 
@@ -400,17 +439,10 @@ function renderRepos({ repos }) {
     const hidden = ranked.length - shown.length;
     const note = hidden > 0 ? `, top ${shown.length} of ${ranked.length}` : '';
 
-    const repoBadge = `<img alt="Repositories" src="${shield('Repositories', num(repos.length), '57606a', '&logo=github&logoColor=white')}">`;
-    const starBadge =
-        stars > 0 ? ` <img alt="Stars" src="${shield('Stars', num(stars), 'd29922', '&logo=github&logoColor=white')}">` : '';
+    // The count already leads the heading; a badge repeating it costs a whole row.
+    const starNote = stars > 0 ? `, ⭐ ${num(stars)}` : '';
 
-    return `<div align="center">
-
-${repoBadge}${starBadge}
-
-</div>
-
-**Repositories by primary language** — ${repos.length} owned repos, forks excluded${note}
+    return `**Repositories by primary language** — ${repos.length} owned repos, forks excluded${note}${starNote}
 
 ${chart}
 
