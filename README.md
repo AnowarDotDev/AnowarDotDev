@@ -145,7 +145,6 @@ What's inside:
 <img alt="Contributions" src="https://img.shields.io/badge/Contributions-10%2C392-1f6feb?style=for-the-badge&logo=github&logoColor=white">
 <img alt="Pull requests" src="https://img.shields.io/badge/Pull%20requests-178-8250df?style=for-the-badge&logo=github&logoColor=white">
 <img alt="Issues" src="https://img.shields.io/badge/Issues-33-0969da?style=for-the-badge&logo=github&logoColor=white">
-<img alt="Repositories" src="https://img.shields.io/badge/Repositories-49-57606a?style=for-the-badge&logo=github&logoColor=white">
 <img alt="Current streak" src="https://img.shields.io/badge/Current%20streak-5%20days-d29922?style=for-the-badge&logo=fire&logoColor=white">
 <img alt="Longest streak" src="https://img.shields.io/badge/Longest%20streak-27%20days-cf222e?style=for-the-badge&logo=fire&logoColor=white">
 
@@ -162,22 +161,32 @@ What's inside:
 2021  █░░░░░░░░░░░░░░░░░░░░░░░      20
 ```
 
-**Repositories by primary language** — 49 owned repos, forks excluded
-
-```text
-PHP           █████░░░░░░░░░░░░░░░   25.5%
-JavaScript    ████░░░░░░░░░░░░░░░░   21.3%
-Blade         ███░░░░░░░░░░░░░░░░░   14.9%
-Vue           ███░░░░░░░░░░░░░░░░░   12.8%
-HTML          ██░░░░░░░░░░░░░░░░░░   10.6%
-TypeScript    █░░░░░░░░░░░░░░░░░░░    6.4%
-Dart          █░░░░░░░░░░░░░░░░░░░    4.3%
-C++           █░░░░░░░░░░░░░░░░░░░    4.3%
-```
-
 <div align="center"><sub>👥 3 followers · generated 2026-07-29 by <a href="scripts/build-stats.mjs">build-stats.mjs</a></sub></div>
 
 <!-- STATS:END -->
+
+<!-- REPOS:START -->
+
+<div align="center">
+
+<img alt="Repositories" src="https://img.shields.io/badge/Repositories-49-57606a?style=for-the-badge&logo=github&logoColor=white">
+
+</div>
+
+**Repositories by primary language** — 49 owned repos, forks excluded
+
+```text
+PHP           █████░░░░░░░░░░░░░░░   25.0%
+JavaScript    █████░░░░░░░░░░░░░░░   22.9%
+Blade         ███░░░░░░░░░░░░░░░░░   14.6%
+Vue           ███░░░░░░░░░░░░░░░░░   12.5%
+HTML          ██░░░░░░░░░░░░░░░░░░   10.4%
+TypeScript    █░░░░░░░░░░░░░░░░░░░    6.3%
+Dart          █░░░░░░░░░░░░░░░░░░░    4.2%
+C++           █░░░░░░░░░░░░░░░░░░░    4.2%
+```
+
+<!-- REPOS:END -->
 
 ---
 
