@@ -109,7 +109,7 @@ What's inside:
 
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="assets/summary-dark.svg?v=20260729">
-  <img alt="10,149 Commits, 10,392 Contributions, 178 Pull requests, 33 Issues, 5 Day streak, 27 Longest streak" src="assets/summary-light.svg?v=20260729">
+  <img alt="10,150 Commits, 10,393 Contributions, 178 Pull requests, 33 Issues, 5 Day streak, 27 Longest streak" src="assets/summary-light.svg?v=20260729">
 </picture>
 
 </div>
@@ -118,7 +118,7 @@ What's inside:
 
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="assets/contributions-dark.svg?v=20260729">
-  <img alt="Contributions per year, 2021–2026: 2026 2,409, 2025 4,037, 2024 1,328, 2023 1,588, 2022 1,010, 2021 20" src="assets/contributions-light.svg?v=20260729">
+  <img alt="Contributions per year, 2021–2026: 2026 2,410, 2025 4,037, 2024 1,328, 2023 1,588, 2022 1,010, 2021 20" src="assets/contributions-light.svg?v=20260729">
 </picture>
 
 <details>
@@ -126,7 +126,7 @@ What's inside:
 
 | Year | Contributions |
 | --- | --- |
-| 2026 | 2,409 |
+| 2026 | 2,410 |
 | 2025 | 4,037 |
 | 2024 | 1,328 |
 | 2023 | 1,588 |
