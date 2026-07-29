@@ -1,0 +1,70 @@
+name: update stats
+
+# Third-party card services can only see public commits, which is ~7% of the
+# real number here. This regenerates the README stats block with our own PAT.
+on:
+  schedule:
+    - cron: '20 3 * * *' # daily, 03:20 UTC
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - scripts/build-stats.mjs
+      - .github/workflows/update-stats.yml
+
+permissions:
+  contents: write
+
+concurrency:
+  group: update-stats
+  cancel-in-progress: false
+
+jobs:
+  stats:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v6
+
+      # The `secrets` context is not available in a job-level `if`, so the
+      # check lives here: no token means skip quietly rather than fail red.
+      - name: Check for STATS_TOKEN
+        id: guard
+        env:
+          STATS_TOKEN: ${{ secrets.STATS_TOKEN }}
+        run: |
+          if [ -z "$STATS_TOKEN" ]; then
+            echo "::notice::STATS_TOKEN not set — skipping. Add a classic PAT with read:user + repo as the STATS_TOKEN secret."
+            echo 'ready=false' >> "$GITHUB_OUTPUT"
+          else
+            echo 'ready=true' >> "$GITHUB_OUTPUT"
+          fi
+
+      - uses: actions/setup-node@v6
+        if: steps.guard.outputs.ready == 'true'
+        with:
+          node-version: 22
+
+      - name: Regenerate stats block
+        # A PAT is only needed for the repo list — 38 of the 49 owned repos are
+        # private, and GITHUB_TOKEN would see none of them. Commit, PR and issue
+        # counts come from restrictedContributionsCount, which any token can read
+        # once the account shares private contribution counts.
+        if: steps.guard.outputs.ready == 'true'
+        env:
+          GH_TOKEN: ${{ secrets.STATS_TOKEN }}
+          STATS_LOGIN: ${{ github.repository_owner }}
+        run: node scripts/build-stats.mjs
+
+      - name: Commit if changed
+        if: steps.guard.outputs.ready == 'true'
+        run: |
+          if git diff --quiet -- README.md; then
+            echo "No stats change."
+            exit 0
+          fi
+          git config user.name  "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add README.md
+          git commit -m "chore: refresh profile stats"
+          git push

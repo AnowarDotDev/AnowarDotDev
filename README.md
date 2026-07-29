@@ -137,16 +137,47 @@ What's inside:
 
 ## GitHub stats
 
+<!-- STATS:START -->
+
 <div align="center">
 
-<img height="180" alt="GitHub stats" src="https://github-profile-summary-cards.vercel.app/api/cards/stats?username=AnowarDotDev&theme=github_dark">
-<img height="180" alt="Most used languages" src="https://github-profile-summary-cards.vercel.app/api/cards/most-commit-language?username=AnowarDotDev&theme=github_dark">
-
-<img alt="GitHub streak" src="https://streak-stats.demolab.com?user=AnowarDotDev&hide_border=true&theme=github-dark">
-
-<img alt="Contribution graph" src="https://github-readme-activity-graph.vercel.app/graph?username=AnowarDotDev&theme=github-dark&hide_border=true&area=true">
+<img alt="Commits" src="https://img.shields.io/badge/Commits-10%2C149-0f172a?style=for-the-badge&logo=git&logoColor=white">
+<img alt="Contributions" src="https://img.shields.io/badge/Contributions-10%2C392-1f6feb?style=for-the-badge&logo=github&logoColor=white">
+<img alt="Pull requests" src="https://img.shields.io/badge/Pull%20requests-178-8250df?style=for-the-badge&logo=github&logoColor=white">
+<img alt="Issues" src="https://img.shields.io/badge/Issues-33-0969da?style=for-the-badge&logo=github&logoColor=white">
+<img alt="Repositories" src="https://img.shields.io/badge/Repositories-49-57606a?style=for-the-badge&logo=github&logoColor=white">
+<img alt="Current streak" src="https://img.shields.io/badge/Current%20streak-5%20days-d29922?style=for-the-badge&logo=fire&logoColor=white">
+<img alt="Longest streak" src="https://img.shields.io/badge/Longest%20streak-27%20days-cf222e?style=for-the-badge&logo=fire&logoColor=white">
 
 </div>
+
+**Contributions per year** — public and private combined, since 2021
+
+```text
+2026  ██████████████░░░░░░░░░░   2,409
+2025  ████████████████████████   4,037
+2024  ████████░░░░░░░░░░░░░░░░   1,328
+2023  █████████░░░░░░░░░░░░░░░   1,588
+2022  ██████░░░░░░░░░░░░░░░░░░   1,010
+2021  █░░░░░░░░░░░░░░░░░░░░░░░      20
+```
+
+**Repositories by primary language** — 49 owned repos, forks excluded
+
+```text
+PHP           █████░░░░░░░░░░░░░░░   25.5%
+JavaScript    ████░░░░░░░░░░░░░░░░   21.3%
+Blade         ███░░░░░░░░░░░░░░░░░   14.9%
+Vue           ███░░░░░░░░░░░░░░░░░   12.8%
+HTML          ██░░░░░░░░░░░░░░░░░░   10.6%
+TypeScript    █░░░░░░░░░░░░░░░░░░░    6.4%
+Dart          █░░░░░░░░░░░░░░░░░░░    4.3%
+C++           █░░░░░░░░░░░░░░░░░░░    4.3%
+```
+
+<div align="center"><sub>👥 3 followers · generated 2026-07-29 by <a href="scripts/build-stats.mjs">build-stats.mjs</a></sub></div>
+
+<!-- STATS:END -->
 
 ---
 
