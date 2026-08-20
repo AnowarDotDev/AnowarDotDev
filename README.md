@@ -108,8 +108,8 @@ What's inside:
 <div align="center">
 
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="assets/summary-dark.svg?v=20260819">
-  <img alt="10,320 Commits, 10,563 Contributions, 178 Pull requests, 33 Issues, 6 Day streak, 27 Longest streak" src="assets/summary-light.svg?v=20260819">
+  <source media="(prefers-color-scheme: dark)" srcset="assets/summary-dark.svg?v=20260820">
+  <img alt="10,324 Commits, 10,567 Contributions, 178 Pull requests, 33 Issues, 7 Day streak, 27 Longest streak" src="assets/summary-light.svg?v=20260820">
 </picture>
 
 </div>
@@ -117,8 +117,8 @@ What's inside:
 **Contributions per year** — public and private combined, since 2021
 
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="assets/contributions-dark.svg?v=20260819">
-  <img alt="Contributions per year, 2021–2026: 2026 2,580, 2025 4,037, 2024 1,328, 2023 1,588, 2022 1,010, 2021 20" src="assets/contributions-light.svg?v=20260819">
+  <source media="(prefers-color-scheme: dark)" srcset="assets/contributions-dark.svg?v=20260820">
+  <img alt="Contributions per year, 2021–2026: 2026 2,584, 2025 4,037, 2024 1,328, 2023 1,588, 2022 1,010, 2021 20" src="assets/contributions-light.svg?v=20260820">
 </picture>
 
 <details>
@@ -126,7 +126,7 @@ What's inside:
 
 | Year | Contributions |
 | --- | --- |
-| 2026 | 2,580 |
+| 2026 | 2,584 |
 | 2025 | 4,037 |
 | 2024 | 1,328 |
 | 2023 | 1,588 |
@@ -166,7 +166,7 @@ What's inside:
 
 <!-- META:START -->
 
-<div align="center"><sub>3 followers · generated 2026-08-19 by <a href="scripts/build-stats.mjs">build-stats.mjs</a></sub></div>
+<div align="center"><sub>3 followers · generated 2026-08-20 by <a href="scripts/build-stats.mjs">build-stats.mjs</a></sub></div>
 
 <!-- META:END -->
 
